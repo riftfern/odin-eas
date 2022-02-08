@@ -1,13 +1,10 @@
 * {
     box-sizing: border-box;
-    
-    
 }
 
 #btnContainer{
     display:flex;
 }
-
 
 #container {
     height:100px;
@@ -15,10 +12,4 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
-
-}
-
-.color:hover{
-    background-color: black;
 }
