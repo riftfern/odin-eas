@@ -1,47 +1,36 @@
-let clearBtn = document.getElementById('clear');
-
-let createBoxes = function(numPerRow){
-    const container = document.querySelector('#container');
-    const total = (numPerRow * numPerRow) + numPerRow;
-    const mod = numPerRow + 1;
-
-    
-
-    for(let i = 1; i < total; i++){
-        const div = document.createElement('div');
-
-        if (i % mod === 0) {
-            div.style.cssText = "border: 0; height: 0; width: 100%";
-          } else {
-            div.style.cssText = "border: 1px solid black; height: 25px; width: 25px";
-          }
-        
-        container.appendChild(div);
-        div.classList.add('color');
-
-        document.getElementsByClassName('color')
-        for(let i = 0; i < total; i++){
-            div.addEventListener('mouseover', function(e) {
-                e.target.style.background = 'black';
-            });
-            
-            clearBtn.addEventListener('click', function(e){
-                div.style.backgroundColor = '';
-            })
-           
-            
-
-        }
-
-        //const clear = document.querySelector('#clear');
-        //clear.addEventListener('click', function(e;) => {
-            
-        //})
-
-    }
-    
-}    
-const clearBoxes = function(){
-
+function random (){
+    return Math.round(Math.random() * 255)
 }
-createBoxes(16);
+
+function newColor (e){
+    e.target.style.backgroundColor = `rgb(${random()},${random()},${random()})`
+}
+
+function buildCells(rows = 16, cols = 16){
+    container.style.setProperty('--grid-rows', rows);
+    container.style.setProperty('--grid-cols', cols);
+    container.innerHTML = '';
+
+    for(let i = 0; i < (rows * cols); i++){
+        const cell = document.createElement('div')
+        cell.className = 'grid-item';
+        cell.addEventListener('mouseenter', newColor);
+        container.appendChild(cell);
+    }
+}
+
+function newGrid () {
+    let size = Number(prompt('Pick a number between 1 and 100'));
+    if(size > 0 && size <= 100){
+        buildCells(size, size)
+    }else{
+        buildCells()
+        alert('Number must be between 0 and 100');
+    }
+}
+
+const container = document.querySelector('.container');
+buildCells();
+
+const button = document.getElementById('clear');
+button.addEventListener('click',newGrid);
