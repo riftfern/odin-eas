@@ -1,6 +1,4 @@
-function changeColor() {
-    document.getElementsByClassName(color).style.color = 'black';
-}
+let clearBtn = document.getElementById('clear');
 
 let createBoxes = function(numPerRow){
     const container = document.querySelector('#container');
@@ -23,13 +21,27 @@ let createBoxes = function(numPerRow){
 
         document.getElementsByClassName('color')
         for(let i = 0; i < total; i++){
-                div.addEventListener('mouseover', function(e) {
-                    e.target.style.background = 'black';
+            div.addEventListener('mouseover', function(e) {
+                e.target.style.background = 'black';
             });
+            
+            clearBtn.addEventListener('click', function(e){
+                div.style.backgroundColor = '';
+            })
+           
+            
 
         }
+
+        //const clear = document.querySelector('#clear');
+        //clear.addEventListener('click', function(e;) => {
+            
+        //})
+
     }
     
 }    
+const clearBoxes = function(){
 
+}
 createBoxes(16);
